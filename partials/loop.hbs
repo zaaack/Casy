@@ -8,11 +8,11 @@
             {{#if tags}}on {{tags separator=" &bull; "}}{{/if}}
         </span>
 
-        <h2 class="post-title" itemprop="headline"><a href="{{url}}">{{{title}}}</a></h2>
+        <h2 class="post-title" itemprop="headline">{{#if top}}<b>[TOP]</b> {{/if}}<a href="{{url}}">{{{title}}}</a></h2>
     </header>
 
     <section class="post-excerpt">
-        <p>{{excerpt}}&hellip;</p>
+        <p>{{excerpt characters=200}}&hellip;</p>
     </section>
 </article>
 

@@ -20,26 +20,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {{! Favicons. I used http://realfavicongenerator.net/ - a great favicons generator. }}
-    <link rel="shortcut icon" href="{{asset "favicons/favicon.ico"}}">
-    <link rel="apple-touch-icon" sizes="57x57" href="{{asset "favicons/apple-touch-icon-57x57.png"}}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{asset "favicons/apple-touch-icon-114x114.png"}}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{asset "favicons/apple-touch-icon-72x72.png"}}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{asset "favicons/apple-touch-icon-144x144.png"}}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{asset "favicons/apple-touch-icon-60x60.png"}}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{asset "favicons/apple-touch-icon-120x120.png"}}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset "favicons/apple-touch-icon-76x76.png"}}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{asset "favicons/apple-touch-icon-152x152.png"}}">
-    <link rel="icon" type="image/png" href="{{asset "favicons/favicon-192x192.png"}}" sizes="192x192">
-    <link rel="icon" type="image/png" href="{{asset "favicons/favicon-160x160.png"}}" sizes="160x160">
-    <link rel="icon" type="image/png" href="{{asset "favicons/favicon-96x96.png"}}" sizes="96x96">
-    <link rel="icon" type="image/png" href="{{asset "favicons/favicon-16x16.png"}}" sizes="16x16">
-    <link rel="icon" type="image/png" href="{{asset "favicons/favicon-32x32.png"}}" sizes="32x32">
+    <link rel="shortcut icon" href="{{@blog.logo}}">
+    <link rel="apple-touch-icon" href="{{@blog.logo}}">
+    <link rel="icon" type="image/png" href="{{@blog.logo}}" >
     <meta name="msapplication-TileColor" content="#2b5797" />
-    <meta name="msapplication-TileImage" content="{{asset "favicons/mstile-144x144.png"}}" />
-    <meta name="msapplication-config" content="{{asset "favicons/browserconfig.xml"}}" />
+    <meta name="msapplication-TileImage" content="{{@blog.logo}}" />
+    <!-- <meta name="msapplication-config" content="{{@blog.logo}}" /> -->
 
     {{! Styles }}
-    <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="{{asset "lib/icon/iconfont.css"}}" media="screen" charset="utf-8">
+    <link href='http://fonts.useso.com/css?family=Lora' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{{asset "build/all.min.css"}}" />
 
     {{! Google Analytics }}
@@ -73,6 +64,7 @@
     <meta property="og:image:height" content="200" />
 
 
+    <link rel="stylesheet" href="/assets/lib/hljs/zenburn.css" media="screen" title="no title" charset="utf-8">
     {{! Ghost outputs important style and meta data with this tag }}
     {{ghost_head}}
 </head>
@@ -81,6 +73,15 @@
     {{> "sidebar"}}
 
     <div class="content">
+        <div class="toolbar">
+          <form
+            id="search-form"
+            action="http://cn.bing.com" method="get" target="_blank" class="search-box">
+            <input type="hidden" name="q" value="">
+            <input id="search-input" type="text" value="" placeholder="search...">
+            <i class="iconfont icon-search"></i>
+          </form>
+        </div>
         {{{body}}}
     </div>
 
@@ -89,6 +90,13 @@
 
     {{! JS}}
     <script type="text/javascript" src="{{asset "build/all.min.js"}}"></script>
-
+    <script type="text/javascript">
+      $('#search-form').on('submit',function (event) {
+        var $this = $(this)
+        $this.find('input[name=q]').val($this.find('#search-input').val()+' site:'+location.host)
+      }).find('.iconfont').click(function (e) {
+        $('#search-form').submit()
+      })
+    </script>
 </body>
 </html>

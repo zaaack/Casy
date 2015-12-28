@@ -16,16 +16,15 @@
   "author": "Zack Young",
   "license": "MIT",
   "dependencies": {
-    "meow": "^3.0.0",
-      "del": "^0.1.1",
-      "gulp": "*",
-      "gulp-concat": "*",
-      "gulp-minify-css": "*",
-      "node-sass": "3.3.3",
-      "gulp-sass": "*",
-      "gulp-uglify": "*",
-      "streamqueue": "^0.1.1"
+    "meow": "^3.0.0"
   },
   "devDependencies": {
+    "del": "^0.1.1",
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-minify-css": "*",
+    "gulp-sass": "*",
+    "gulp-uglify": "*",
+    "streamqueue": "^0.1.1"
   }
 }

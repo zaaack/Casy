@@ -4,12 +4,13 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var del = require('del');
 var minifyCSS = require('gulp-minify-css');
+var sass = require('gulp-sass')
 var streamqueue  = require('streamqueue');
 
 
 var paths = {
-    scripts: ['assets/js/*.js'],
-    css: ['assets/css/*.css']
+    scripts: ['assets/src/**/*.js'],
+    css: ['assets/src/**/*.scss']
 };
 
 // Not all tasks need to use streams
@@ -22,9 +23,8 @@ gulp.task('clean', function(cb) {
 gulp.task('scripts', function() {
     // Minify and copy all JavaScript
     return streamqueue({objectMode: true},
-        gulp.src('assets/js/prism.js'),
-        gulp.src('assets/js/index.js'),
-        gulp.src('assets/js/jquery.fitvids.js')
+        gulp.src('assets/src/js/index.js'),
+        gulp.src('assets/src/js/jquery.fitvids.js')
     )
         .pipe(uglify())
         .pipe(concat('all.min.js'))
@@ -32,11 +32,8 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('minify-css', function() {
-    return streamqueue({ objectMode: true },
-        gulp.src('assets/css/normalize.css'),
-        gulp.src('assets/css/main.css'),
-        gulp.src('assets/css/prism.css')
-    )
+    return gulp.src('assets/src/css/main.scss')
+        .pipe(sass().on('error', sass.logError))
         .pipe(minifyCSS())
         .pipe(concat('all.min.css'))
         .pipe(gulp.dest('assets/build'));
