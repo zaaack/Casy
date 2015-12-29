@@ -629,26 +629,33 @@ a {
     background-size: cover;
     background-position: 20%;
     -webkit-transform: translateZ(0);
+    .description {
+      display: none;
+    }
+
+    .circle {
+      width: 100px;
+      height: 100px;
+    }
+
+    .logo {
+      padding: 0;
+      margin: 0 auto;
+      margin-top: 0.5em;
+      width: 80px;
+    }
   }
 
-  .sidebar .description {
-    display: none;
-  }
-
-  .sidebar .circle {
-    width: 100px;
-    height: 100px;
-  }
-
-  .sidebar .logo {
-    padding: 0;
-    margin: 0 auto;
-    margin-top: 0.5em;
-    width: 80px;
-  }
 
   .content {
     margin-left: 0px;
+
+    .toolbar{
+      position: relative;
+      .search-box{
+        right: 0;
+      }
+    }
   }
 
   .separator {
