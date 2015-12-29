@@ -567,19 +567,20 @@ a {
 
 .share {
   text-align: right !important;
+  ul {
+    margin-bottom: 3em;
+    margin-top: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style-type: none;
+    display: inline-block;
+    margin-left: 1rem;
+    font-size: 1.2em;
+  }
 }
 
-.share ul {
-  margin-bottom: 3em;
-  margin-top: 0;
-}
-
-.share li {
-  list-style-type: none;
-  display: inline-block;
-  margin-left: 1rem;
-  font-size: 1.2em;
-}
 
 .tag-archive-header {
   margin: 1em 0 1em 0;
