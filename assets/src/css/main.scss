@@ -9,7 +9,7 @@ $textColor: #222;
     box-sizing: border-box;
 }
 
-.iconfont{
+.fa{
   text-decoration: none;
   width: 1em;
   margin-right: .2em;
@@ -315,7 +315,8 @@ a {
 
 .sidebar .social-icons {
   margin-top: 10px;
-  width: 100%;
+  width: 60%;
+  margin: 0 auto;
   position: absolute;
   left: 0;
   right: 0;
@@ -323,7 +324,7 @@ a {
   display: inline-block;
 }
 
-.sidebar .iconfont {
+.sidebar .fa {
   font-size: 20px;
   display: inline-block;
   text-decoration: none;
@@ -411,12 +412,12 @@ a {
           font-size: 20px;
           width: 200px;
         }
-        &:focus ~ .iconfont{
+        &:focus ~ .fa{
           font-size: 20px;
           color: #333;
         }
       }
-      .iconfont{
+      .fa{
         position: absolute;
         right: 0;
         top: 0;
@@ -425,7 +426,7 @@ a {
         cursor: pointer;
       }
 
-      input, .iconfont{
+      input, .fa{
         transition: width ease-in-out 0.3s, color ease-in-out 0.3s, font-size ease-in-out 0.3s;
       }
     }
